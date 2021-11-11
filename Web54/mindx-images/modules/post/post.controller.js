@@ -136,11 +136,11 @@ const incLikePost = async(req, res) => {
 const getCommentByPost = async(req, res) => {
     try {
         const { postId } = req.params;
-        const comments = await PostModel.find({ postId });
+        const comments = await CommentModel.find({ postId });
 
         res.send({
             success: 1,
-            data: foundPost
+            data: comments
         })
     } catch (err) {
         res
