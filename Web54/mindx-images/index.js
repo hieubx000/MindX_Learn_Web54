@@ -1,10 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose')
 const PostRouter = require('./modules/post')
 const CommentRouter = require('./modules/comment')
+const AuthRouter = require('./modules/auth')
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/mindx-demo');
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("MongoDB Connected");
 
     const app = express();
@@ -12,8 +14,9 @@ async function main() {
 
     app.use('/api/posts', PostRouter)
     app.use('/api/comments', CommentRouter)
+    app.use('/api/auth', AuthRouter)
 
-    app.listen(9000, (err) => {
+    app.listen(process.env.PORT || 9000, (err) => {
         if (err) throw err;
 
         console.log("Server Connected");
