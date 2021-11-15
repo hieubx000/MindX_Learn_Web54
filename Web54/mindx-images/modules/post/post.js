@@ -22,7 +22,7 @@ const PostSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    createBy: String
+    createBy: mongoose.Types.ObjectId
 }, {
     timestamps: true
         // createAt, UpdatedAt

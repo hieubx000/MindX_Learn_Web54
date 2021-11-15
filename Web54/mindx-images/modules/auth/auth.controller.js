@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const UserModel = require('./user')
+const tokenProvider = require("../../common/tokenProvider")
 
 const signUp = async(req, res) => {
     try {
@@ -31,13 +32,19 @@ const signUp = async(req, res) => {
             //nếu k có salt
             // 123456 => abcxyz
             // ngồi băm 123456 => abcxyz
+        console.log(salt);
         const hashPassword = await bcrypt.hash(password, salt)
 
         const newUser = await UserModel.create({ username, password: hashPassword })
+        const token = tokenProvider.sign(existedUser._id)
 
         res.send({
             success: 1,
-            data: { _id: newUser._id, username: newUser.username }
+            data: {
+                _id: newUser._id,
+                username: newUser.username,
+                token
+            }
         })
     } catch (err) {
         res.status(400).send({ success: 0, data: null, message: err.message || "Something went wrong" })
@@ -59,12 +66,16 @@ const login = async(req, res) => {
         const matchedPassword = await bcrypt.compare(password, hashPassword);
 
         if (!matchedPassword) {
-            throw new Error("Đăng nhập thất bại")
+            throw new Error("Đăng nhập thất bại (password không đúng)")
         }
+
+        // đăng nhập thành công trả token định danh người dùng
+        const token = tokenProvider.sign(existedUser._id)
 
         res.send({
             success: 1,
-            data: { _id: existedUser._id, username: existedUser.username }
+            data: { _id: existedUser._id, username: existedUser.username },
+            token
         })
     } catch (err) {
         res.status(400).send({ success: 0, data: null, message: err.message || "Something went wrong" })
