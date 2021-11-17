@@ -1,0 +1,6 @@
+[{"id":1,"username":"hieu","passwwork":"123456"},
+{"id":2,"username":"nam","passwwork":"123456"},
+{"id":3,"username":"linh","passwwork":"123456"}]
+[{"id":1,"username":"hieu","passwwork":"123456"},
+{"id":2,"username":"nam","passwwork":"123456"},
+{"id":3,"username":"linh","passwwork":"123456"}][{"id":1,"username":"hieu","password":"123456"},{"id":2,"username":"nam","password":"123456"},{"id":3,"username":"linh","password":"123456"}][{"id":1,"username":"hieu","password":"123456"},{"id":2,"username":"nam","password":"123456"},{"id":3,"username":"linh","password":"123456"}]
