@@ -15,7 +15,6 @@ async function main() {
     const app = express();
     app.use(express.json()); // every request => parse body thành biến JS => gắn field body của request
 
-
     app.use(log)
 
     app.use('/api/posts', PostRouter)
