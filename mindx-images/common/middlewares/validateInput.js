@@ -2,6 +2,7 @@ const HttpError = require('../httpError');
 
 const validateInput = (schema, property) => {
     return function(req, res, next) {
+        //const input = {...req.params, ...req.body, ...req.query}
         const input = req[property];
 
         const { error } = schema.validate(input);

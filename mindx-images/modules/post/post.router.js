@@ -9,6 +9,9 @@ const postValid = require('./post.validation')
 const validateInput = require('../../common/middlewares/validateInput')
 const isAuth = require("../../common/middlewares/isAuth")
 
+// không define query
+// posts?key1=value&key2=value
+
 // Router tập hợp các routing có tiền tố /api/posts
 router.get('/', postController.getAllPosts)
 router.get('/:postId/', postController.getPostById)
