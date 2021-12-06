@@ -8,7 +8,7 @@ class TagBox extends Component {
     constructor(props){
         super(props)
         this.state = {
-            tags: null,
+            tags: [],
             status: "idle"
         }
     }
@@ -18,7 +18,7 @@ class TagBox extends Component {
             const res = await axios.get('https://api.quotable.io/tags')
             const tags = res.data;
             
-            console.log(tags);
+            console.log(tags[1]);
             this.setState({
                 tags,
                 status: "done"
@@ -30,6 +30,7 @@ class TagBox extends Component {
 
     renderTags = () => {
         const {status, tags} = this.state
+        const {activeTag, handleActiveTag} = this.props;
         console.log(tags);
         if(status === "error"){
             return <div>Something went wrong</div>
@@ -39,10 +40,13 @@ class TagBox extends Component {
         return(
             <>
                 {tags.map(tag => {
+                    const colorActive = tag === activeTag ? "tag-item active" : "tag-item"
                     return(
-                        <div className = "nameTags">
+                        <span key={tag._id} 
+                        className ={colorActive}
+                        onClick={() => handleActiveTag(tag)}>
                             {tag.name}
-                        </div>
+                        </span>
                     )
                 })}
             </>

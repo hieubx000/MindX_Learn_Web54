@@ -18,3 +18,8 @@
     text-align: center;
     margin: 40px auto;
 }
+
+.App .Tags-Box {
+    margin: 40px 20px;
+    /* display: inline-flex; */
+}

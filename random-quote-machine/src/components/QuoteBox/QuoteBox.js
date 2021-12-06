@@ -49,7 +49,7 @@ class QuoteBox extends Component {
         if(status === "error"){
             return <div>Something went wrong</div>
         }
-        console.log(quote);
+   
         return(
             <>
                 <div className = "content">

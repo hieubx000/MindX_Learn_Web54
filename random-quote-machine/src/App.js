@@ -27,7 +27,8 @@ class App extends Component {
 
       // khai báo một cái biến để quy định thằng nào active
       this.state = {
-          activeColor: colors[0]
+          activeColor: colors[0],
+          activeTag: null
           
       }
   }
@@ -39,8 +40,14 @@ class App extends Component {
       })
     }
 
+    handleActiveTag = (newTag) => {
+      this.setState({
+        activeTag:newTag
+      })
+    }
+
     render() {
-    const {activeColor} = this.state
+    const {activeColor, activeTag} = this.state
     return (  
       <div className ="App" style={{backgroundColor: activeColor}}>
         <div className ="Header-box">
@@ -57,7 +64,8 @@ class App extends Component {
           />
         </div>
         <div className="Tags-Box">
-            <TagBox/>
+            <TagBox activeTag = {activeTag} 
+            handleActiveTag = {this.handleActiveTag}/>
         </div>
       </div>
 
