@@ -1,9 +1,11 @@
 {
     "cSpell.words": [
-        "bcriptjs",
-        "middlewares",
-        "originalname",
-        "virtuals"
+      "bcriptjs",
+      "clsx",
+      "craco",
+      "middlewares",
+      "originalname",
+      "virtuals"
     ],
     "[javascriptreact]": {
         "editor.codeActionsOnSave": {

@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "axios": "^0.24.0",
-    "react-feather": "^2.0.9"
-  }
-}

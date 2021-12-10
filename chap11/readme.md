@@ -1,4 +1,4 @@
-s# Buổi 11
+# Buổi 11
 - Làm quen với React
 - Mô tả create-react-app để làm gì, lập trình frontend hiện đại cần gì
 - Component trong React
