@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 require("express-async-errors")
+const cors = require('cors')
 const mongoose = require('mongoose')
 const PostRouter = require('./modules/post')
 const CommentRouter = require('./modules/comment')
@@ -16,6 +17,7 @@ async function main() {
     const app = express();
     app.use(express.json()); // every request => parse body thành biến JS => gắn field body của request
 
+    app.use(cors())
     app.use(log)
 
     app.use('/uploads', express.static('uploads'))

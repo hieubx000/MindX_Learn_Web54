@@ -2,30 +2,20 @@ import React from 'react';
 
 import FormAddTask from './component/FormAddTask/FormAddTask';
 import TaskList from './component/TaskList';
+import useSyncLocalStorage from "./hooks/useSyncLocalStorage"
+
 
 function App() {
-  const [tasks, setTasks] = React.useState(() => {
-    const storedTasks = localStorage.getItem('tasks');
+  const [tasks, setTasks] = useSyncLocalStorage('todo:tasks', [])
 
-    if (!storedTasks) {
-      return []
-    }
-
-    return JSON.parse(storedTasks)
-  })
-  const [count, setCount] = React.useState(tasks.filter(task => !task.isCompleted).length)
-  React.useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-
+  const [count, setCount] = React.useState(tasks.length)
   const handleAddTask = (text) => {
     setTasks(preTasks => [...preTasks, { content: text, isCompleted: false }]);
     setCount(count+1)
 }
 
   const [check, setCheck] = React.useState()
-  console.log(count);
+  console.log(tasks);
   const handleChangeCB = e => {
        let isChecked = e.target.checked;
       console.log(isChecked);
@@ -43,11 +33,11 @@ function App() {
     (deleteIdx) => {
       setTasks(preTasks => preTasks.filter((_, currentIdx) => currentIdx !== deleteIdx));
     }  
-  ,[]);
+  ,[setTasks]);
 
   const title = React.useMemo(() => {
     return count > 0 ? `There is ${count} tasks to done` : 'All tasks is done';
-  },[tasks, count]);
+  },[ count]);
   
   return (
     <div className="container mx-auto">
