@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { AuthLayout } from "../../components/Layout"
 import request from '../../api/request'
 import {useForm, useWatch} from 'react-hook-form'
@@ -56,7 +57,7 @@ export default function Signup() {
     return (
         <AuthLayout>
             <div className='border p-3' style={{width: 500}}>
-                <h1>MindX Form</h1>
+                <h1>SIGN UP</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     
                     <div className="mb-3">
@@ -98,6 +99,9 @@ export default function Signup() {
                         
                     </div>
                     <SubmitButton control={control} errors={errors}/>
+                    <div>
+                         <Link className='btn btn-link' to="/login">Login</Link>
+                    </div>
                 </form>
             </div>
         </AuthLayout>

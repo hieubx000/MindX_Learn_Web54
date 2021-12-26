@@ -10,13 +10,14 @@ export default function Pagination({
 
     const renderPageItems = () => {
         const pageItems = [];
-    
+      
         for (let i = 1; i <= maxPage; i+= 1) {
           const isActive = i === currentPage;
     
           const cls = isActive? "page-item active" : "page-item";
           const pageItem = (
             <li 
+              key={i}
               className={cls} 
               onClick={() => {
                 if (!isActive) {
@@ -35,7 +36,7 @@ export default function Pagination({
 
     return (
         <div>
-            <ul class="pagination">
+            <ul className="pagination">
                 {renderPageItems()}
             </ul>
         </div>
